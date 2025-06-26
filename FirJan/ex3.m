@@ -57,7 +57,7 @@ title('Filtro FIR passa-banda - Janela de Blackman')
 
 
 %% Gráficos do sinal
-figure(1)
+figure
 subplot(3,1,1),plot(t,s);
 title('Sinal')
 xlabel('t')

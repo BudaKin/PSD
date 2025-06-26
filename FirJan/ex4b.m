@@ -24,18 +24,17 @@ S = abs(2*S/L);
 S = fftshift(S);
 freq = Fs*(-(L/2):(L/2)-1)/L;
 
-%% Filtro 1 (passa-faixa 697 e 852 hz)
-
+%% Filtro 2 (passa-faixa 770 e 941 hz)
 M = 71;
-Omega_c1 = 700;
-Omega_c2 = 800;
+Omega_c1 = 800;
+Omega_c2 = 900;
 Omega_s = 8000;
 wc1 = Omega_c1*2*pi/Omega_s;
 wc2 = Omega_c2*2*pi/Omega_s;
 
 %% Resposta ao impulso do filtro ideal h[n]
 n = [-1*((M-1)/2):(M-1)/2];
-h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para ≠ 0
+h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para ≠0
 h_n(((M-1)/2)+1) = (wc2 - wc1)/pi; %resposta ao impulso para n=0
 w_hamm = 0.54 + 0.46*cos(2*n.*pi/(M));%coeficientes da janela de hamming
 w_hann = 0.5 + 0.5*cos(2*n.*pi/(M));%coeficientes da janela de hanning
@@ -46,19 +45,19 @@ h_hann = w_hann.*h_n;
 h_black = w_black.*h_n;
 figure
 freqz(h_ret,1);
-title('Filtro 1 FIR passa-faixa - Janela Retangular')
+title('Filtro 2 FIR passa-faixa - Janela Retangular')
 
 figure
 freqz(h_hamm,1);
-title('Filtro 1 FIR passa-faixa - Janela de Hammming')
+title('Filtro 2 FIR passa-faixa - Janela de Hammming')
 
 figure
 freqz(h_hann,1);
-title('Filtro 1 FIR passa-faixa - Janela de Hanning')
+title('Filtro 2 2 FIR passa-faixa - Janela de Hanning')
 
 figure
 freqz(h_black,1);
-title('Filtro 1 FIR passa-banda - Janela de Blackman')
+title('Filtro 2 FIR passa-banda - Janela de Blackman')
 
 %% Gráficos do sinal
 figure
@@ -79,6 +78,6 @@ S_F_h_ret = fft(s_f_h_ret);
 S_F_h_ret = abs(2*S_F_h_ret/L);
 S_F_h_ret = fftshift(S_F_h_ret);
 subplot(3,1,3),plot(freq,S_F_h_ret)
-title('Espectro de Amplitude do sinal Filtrado 1')
+title('Espectro de Amplitude do sinal Filtrado 2')
 xlabel('f (Hz)')
 ylabel('|S(f)|')
