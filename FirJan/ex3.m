@@ -3,7 +3,25 @@
 % amplitudes de 5, 2 e 1, respectivamente. Projete um filtro usando as janelas
 % retangular, Hamming, Hanning e Blackman para eliminar as componentes de 50 e 900 Hz.
 
-clear all
+clear all; close all; clc;
+
+%% Sinal
+freq1 = 50;
+freq2 = 350;
+freq3 = 900;
+
+tmin = 0;
+tmax = 2;
+Fs=2000;
+Ts=1/Fs;
+L=(tmax-tmin)/Ts;
+t=0:Ts:tmax-Ts;
+s = 5*sin(2*pi*freq1*t) + 2*sin(2*pi*freq2*t) + sin(2*pi*freq3*t);
+S = fft(s);
+S = abs(2*S/L);
+S = fftshift(S);
+freq = Fs*(-(L/2):(L/2)-1)/L;
+
 M = 71;
 Omega_c1 = 250;
 Omega_c2 = 750;
@@ -37,18 +55,7 @@ figure
 freqz(h_black,1);
 title('Filtro FIR passa-banda - Janela de Blackman')
 
-%% Sinal
-tmin = 0;
-tmax = 2;
-Fs=2000;
-Ts=1/Fs;
-L=(tmax-tmin)/Ts;
-t=0:Ts:tmax-Ts;
-s = 5*sin(2*pi*50*t) + 2*sin(2*pi*300*t) + sin(2*pi*900*t);
-S = fft(s);
-S = abs(2*S/L);
-S = fftshift(S);
-freq = Fs*(-(L/2):(L/2)-1)/L;
+
 %% Gráficos do sinal
 figure(1)
 subplot(3,1,1),plot(t,s);

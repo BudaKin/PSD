@@ -5,7 +5,7 @@
 % • Ωc2 = 35 rad/s
 % • Ωs = 100 rad/s
 
-clear all
+clear all; close all; clc;
 
 % com M = 10, ou 100, ou 1000
 M = 10;
