@@ -7,6 +7,7 @@
 % • Ωs = 5000 rad/s
 
 clear all; close all; clc;
+pkg load signal;
 
 Ap = 1;
 Ar = 40;

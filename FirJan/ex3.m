@@ -30,7 +30,7 @@ wc1 = Omega_c1*2*pi/Omega_s;
 wc2 = Omega_c2*2*pi/Omega_s;
 %% Resposta ao impulso do filtro ideal h[n]
 n = [-1*((M-1)/2):(M-1)/2];
-h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para ≠0
+h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para n≠0
 h_n(((M-1)/2)+1) = (wc2 - wc1)/pi; %resposta ao impulso para n=0
 w_hamm = 0.54 + 0.46*cos(2*n.*pi/(M));%coeficientes da janela de hamming
 w_hann = 0.5 + 0.5*cos(2*n.*pi/(M));%coeficientes da janela de hanning

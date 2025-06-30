@@ -26,7 +26,7 @@ freq = Fs*(-(L/2):(L/2)-1)/L;
 
 %% Filtro 3 (passa-faixa 852 e 1209 hz)
 
-M = 71;
+M = 401;
 Omega_c1 = 900;
 Omega_c2 = 1000;
 Omega_s = 8000;
@@ -35,8 +35,8 @@ wc2 = Omega_c2*2*pi/Omega_s;
 
 %% Resposta ao impulso do filtro ideal h[n]
 n = [-1*((M-1)/2):(M-1)/2];
-h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para ≠0
-h_n(((M-1)/2)+1) = (wc2 - wc1)/pi; %resposta ao impulso para n=0
+h_n = ((sin(wc2.*n) - sin(wc1.*n))./(pi.*n)); %resposta ao impulso para n ≠ 0
+h_n(((M-1)/2)+1) = (wc2 - wc1)/pi; %resposta ao impulso para n = 0
 w_hamm = 0.54 + 0.46*cos(2*n.*pi/(M));%coeficientes da janela de hamming
 w_hann = 0.5 + 0.5*cos(2*n.*pi/(M));%coeficientes da janela de hanning
 w_black = 0.42+0.5*cos(2*n.*pi/(M))+0.08*cos(4*n.*pi/(M)); %coeficientes da janela de blackman
