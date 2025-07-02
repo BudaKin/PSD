@@ -26,7 +26,7 @@ freq = Fs*(-(L/2):(L/2)-1)/L;
 
 %% Filtro 3 (passa-faixa 852 e 1209 hz)
 
-M = 401;
+M = 7;
 Omega_c1 = 900;
 Omega_c2 = 1000;
 Omega_s = 8000;
@@ -80,6 +80,70 @@ S_F_h_ret = fft(s_f_h_ret);
 S_F_h_ret = abs(2*S_F_h_ret/L);
 S_F_h_ret = fftshift(S_F_h_ret);
 subplot(3,1,3),plot(freq,S_F_h_ret)
-title('Espectro de Amplitude do sinal Filtrado 3')
+title('Espectro de Amplitude do sinal Filtrado 3(Rect)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+%% Gráficos do sinal
+figure
+subplot(3,1,1),plot(t,s);
+title('Sinal')
+xlabel('t')
+ylabel('s(t)')
+subplot(3,1,2),plot(freq,S)
+title('Espectro de Amplitude de s(t)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+h_hamm = w_hamm.*h_n;
+s_f_h_hamm = filter(h_hamm,1,s);
+S_F_h_hamm = fft(s_f_h_hamm);
+S_F_h_hamm = abs(2*S_F_h_hamm/L);
+S_F_h_hamm = fftshift(S_F_h_hamm);
+subplot(3,1,3),plot(freq,S_F_h_hamm)
+title('Espectro de Amplitude do sinal Filtrado 3 (Hamm)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+%% Gráficos do sinal
+figure
+subplot(3,1,1),plot(t,s);
+title('Sinal')
+xlabel('t')
+ylabel('s(t)')
+subplot(3,1,2),plot(freq,S)
+title('Espectro de Amplitude de s(t)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+
+h_hann = w_hann.*h_n;
+s_f_h_hann = filter(h_hann,1,s);
+S_F_h_hann = fft(s_f_h_hann);
+S_F_h_hann = abs(2*S_F_h_hann/L);
+S_F_h_hann = fftshift(S_F_h_hann);
+subplot(3,1,3),plot(freq,S_F_h_hann)
+title('Espectro de Amplitude do sinal Filtrado 3 (Hann)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+%% Gráficos do sinal
+figure
+subplot(3,1,1),plot(t,s);
+title('Sinal')
+xlabel('t')
+ylabel('s(t)')
+subplot(3,1,2),plot(freq,S)
+title('Espectro de Amplitude de s(t)')
+xlabel('f (Hz)')
+ylabel('|S(f)|')
+
+h_black = w_black.*h_n;
+s_f_h_black = filter(h_black,1,s);
+S_F_h_black = fft(s_f_h_black);
+S_F_h_black = abs(2*S_F_h_black/L);
+S_F_h_black = fftshift(S_F_h_black);
+subplot(3,1,3),plot(freq,S_F_h_black)
+title('Espectro de Amplitude do sinal Filtrado 3 (Blackmann)')
 xlabel('f (Hz)')
 ylabel('|S(f)|')
