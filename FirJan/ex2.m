@@ -73,7 +73,7 @@ title('Resposta ao Impulso b)');
 [H,w]=freqz(h,1,2048,Omega_s);
 figure(4)
 plot(w,20*log10(abs(H)))
-axis([0 Omega_s/2 -90 10])
+# axis([0 Omega_s/2 -90 10])
 ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (Hz)');
 title('Resposta em Frequência b)');
@@ -118,7 +118,7 @@ title('Resposta ao Impulso c)');
 [H,w]=freqz(h,1,2048,Omega_s);
 figure(6)
 plot(w,20*log10(abs(H)))
-axis([0 Omega_s/2 -90 10])
+# axis([0 Omega_s/2 -90 10])
 ylabel('Resposta de Módulo (dB)');
 xlabel('Frequência (Hz)');
 title('Resposta em Frequência c)');
