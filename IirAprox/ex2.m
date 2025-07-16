@@ -20,9 +20,9 @@ S = fftshift(S);
 freq = Fs*(-(L/2):(L/2)-1)/L;
 
 %% Filtros IIR importados do filterDesigner 
-figure,freqz(num_low1,den_low1);
-figure,freqz(num_low2,den_low2);
-figure,freqz(num_low3,den_low3);
+% figure,freqz(num_low1,den_low1);
+% figure,freqz(num_low2,den_low2);
+% figure,freqz(num_low3,den_low3);
 
 s_f_low1 = filter(num_low1,den_low1,s);
 S_F_low1 = fft(s_f_low1);
